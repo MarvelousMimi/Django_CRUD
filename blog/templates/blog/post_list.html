@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% for film in film_list %} {% for
 colname in film.column_set.all %}
 <p>{{colname}}</p>
-{% endfor %}
+{% endfor %} {% endfor %}
 
 <div class="container d-flex mt-5" style="width: 70%">
   <div class="col">
@@ -23,7 +23,7 @@ colname in film.column_set.all %}
         </tr>
       </thead>
       <tbody>
-        {% comment %} {% for post in post_list %} {% endcomment %}
+        {% for post in post_list %}
         <tr>
           {% comment %}
           <th scope="row">{{forloop.counter}}</th>
