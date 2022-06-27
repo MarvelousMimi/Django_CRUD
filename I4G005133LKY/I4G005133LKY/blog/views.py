@@ -1,28 +1,34 @@
-from django.views import generic
+from django.shortcuts import render
+from django.views.generic  import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
 from .models import Post
 from django.urls import reverse_lazy
     
-class PostCreateView(generic.CreateView):
+class PostListView(ListView):
     model = Post
-    fields = “__all__”
-    success_url  = reverse_lazy(“blog:all”)
+     
+class PostCreateView(CreateView):
+    model = Post
+    fields = '__all__'
+    success_url = reverse_lazy("blog:all")
 
-class PostDetailView(generic.DetailView):
+class PostDetailView(DetailView):
     model = Post
-    template_name = 'post_detail.html'
-    
-class PostListView(generic.ListView):
-    model = Post
-    template_name = 'post_list.html'
-    
-class PostUpdateView(generic.UpdateView):
-    model = Post
-    fields = “__all__”
-    success_url  = reverse_lazy(“blog:all”)
-    
 
-class PostDeleteView(generic.DeleteView):
+
+
+class PostUpdateView(UpdateView):
     model = Post
-    fields = “__all__”
-    success_url  = reverse_lazy(“blog:all”)
-    template_name = 'post_confirm_delete.html'
+    fields = '__all__'
+    success_url = reverse_lazy("blog:all")
+
+    
+class PostDeleteView(DeleteView):
+    model = Post
+    fields = '__all__'
+    success_url = reverse_lazy("blog:all")
